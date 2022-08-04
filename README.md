@@ -8,11 +8,11 @@ C++ Source for Base64.
 * Simple to Compile
 * Only C++ standards
 * CPU & RAM Optimized
-* Compatible with all versions of C ++
+* Compatible with all versions of C++
 
 ## Fast start
 
-Download `examples` folder and play around.
+Download [examples](examples) files and play around.
 
 ## API
 

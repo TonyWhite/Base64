@@ -134,7 +134,7 @@ URL safe charset: "QUI-"
 ### With padding
 
 ```C++
-// Encode string to Base64 with charset
+// Encode string to Base64 with padding
 #include <iostream>
 #include <string>
 #include "Base64.h"

@@ -27,16 +27,16 @@ void test_string() {
   std::string txt = "ABC";
   std::string enc;
   std::string dec;
-  
+
   // Work
   Base64::encode(&txt, &enc);
   Base64::decode(&enc, &dec);
-  
+
   // Print
   dump_string("txt", &txt);
   dump_string("enc", &enc);
   dump_string("dec", &dec);
-  
+
   // Print success
   std::cout << "success: ";
   if (txt == dec) std::cout << "YES";
@@ -53,16 +53,16 @@ void test_binary() {
   bin.push_back('C');
   std::string enc;
   std::vector<char> dec;
-  
+
   // Work
   Base64::encode(&bin, &enc);
   Base64::decode(&enc, &dec);
-  
+
   // Print
   dump_buffer("bin", &bin);
   dump_string("enc", &enc);
   dump_buffer("dec", &dec);
-  
+
   // Print success
   std::cout << "success: ";
   if (bin == dec) std::cout << "YES";
@@ -75,5 +75,6 @@ int main() {
   test_string();
   std::cout << std::endl;
   test_binary();
+
   return 0;
 }

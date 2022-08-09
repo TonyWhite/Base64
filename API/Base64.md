@@ -21,16 +21,19 @@ This class has no constructor.
 
 ## Fields
 
-|Type                       |Field                 |Description    |
-|:--------------------------|:---------------------|:--------------|
-|`static const std::string` |[CHARSET](CHARSET.md) |Base64 charset |
+|Type                       |Field                         |Description             |Status |
+|:--------------------------|:-----------------------------|:-----------------------|:------|
+|`static const std::string` |[STD_CHARSET](STD_CHARSET.md) |Base64 standard charset |Stable |
+|`static const std::string` |[URL_CHARSET](URL_CHARSET.md) |Base64 URL safe charset |Stable |
 
 ## Functions
 
-|Type         |Function            |Description        |
-|:------------|:-------------------|:------------------|
-|`static void`|[decode](decode.md) |Decode from Base64 |
-|`static void`|[encode](encode.md) |Encode to Base64   |
+|Type         |Function                      |Description                                                |Status |
+|:------------|:-----------------------------|:----------------------------------------------------------|:------|
+|`static bool`|[decode](decode.md)           |Decode from Base64                                         |Stable |
+|`static void`|[encode](encode.md)           |Encode to Base64                                           |Stable |
+|`static bool`|[is_standard](is_standard.md) |Check if the encoded string respects the standard charset. |Stable |
+|`static bool`|[is_url_safe](is_url_safe.md) |Check if the encoded string respects the URL safe charset. |Stable |
 
 
 ## Examples
@@ -65,16 +68,16 @@ void test_string() {
   std::string txt = "ABC";
   std::string enc;
   std::string dec;
-  
+
   // Work
   Base64::encode(&txt, &enc);
   Base64::decode(&enc, &dec);
-  
+
   // Print
   dump_string("txt", &txt);
   dump_string("enc", &enc);
   dump_string("dec", &dec);
-  
+
   // Print success
   std::cout << "success: ";
   if (txt == dec) std::cout << "YES";
@@ -91,16 +94,16 @@ void test_binary() {
   bin.push_back('C');
   std::string enc;
   std::vector<char> dec;
-  
+
   // Work
   Base64::encode(&bin, &enc);
   Base64::decode(&enc, &dec);
-  
+
   // Print
   dump_buffer("bin", &bin);
   dump_string("enc", &enc);
   dump_buffer("dec", &dec);
-  
+
   // Print success
   std::cout << "success: ";
   if (bin == dec) std::cout << "YES";
@@ -113,13 +116,15 @@ int main() {
   test_string();
   std::cout << std::endl;
   test_binary();
+
   return 0;
 }
+
 ```
 
 Output
 
-```shell
+```
 txt: [3] "ABC"
 enc: [4] "QUJD"
 dec: [3] "ABC"

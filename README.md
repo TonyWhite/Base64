@@ -2,7 +2,15 @@
 
 C++ Source for Base64.
 
-## Features
+## Encoder Features
+* Standard
+  * symbols `+` and `/`
+  * optional padding `=`
+* URL safe
+  * symbols `-` and `_`
+  * optional padding `=`
+
+## Dev Features
 
 * Simple to use
 * Simple to Compile
@@ -12,7 +20,7 @@ C++ Source for Base64.
 
 ## Fast start
 
-Download [examples](examples) files and play around.
+Download [examples](examples) folder and play around.
 
 ## API
 

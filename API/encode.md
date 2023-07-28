@@ -36,7 +36,7 @@ None.
 // Encode string to Base64
 #include <iostream>
 #include <string>
-#include "Base64.h"
+#include "Base64.hpp"
 
 int main() {
   // Init
@@ -65,7 +65,7 @@ enc: [4] "QUJD"
 // Encode vector<char> to Base64
 #include <iostream>
 #include <vector>
-#include "Base64.h"
+#include "Base64.hpp"
 
 int main() {
   // Init
@@ -97,7 +97,7 @@ enc: [4] "QUJD"
 // Encode string to Base64 with charset
 #include <iostream>
 #include <string>
-#include "Base64.h"
+#include "Base64.hpp"
 
 int main() {
   // Init
@@ -137,7 +137,7 @@ URL safe charset: "QUI-"
 // Encode string to Base64 with padding
 #include <iostream>
 #include <string>
-#include "Base64.h"
+#include "Base64.hpp"
 
 int main() {
   // Init

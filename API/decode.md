@@ -38,7 +38,7 @@ Returns `false` if the encoded string not respect the given encoding.
 // Decode Base64 to string
 #include <iostream>
 #include <string>
-#include "Base64.h"
+#include "Base64.hpp"
 
 int main() {
   // Init
@@ -67,7 +67,7 @@ dec: [3] "ABC"
 // Decode Base64 to vector<char>
 #include <iostream>
 #include <vector>
-#include "Base64.h"
+#include "Base64.hpp"
 
 int main() {
   // Init
@@ -101,7 +101,7 @@ dec: [3] {65,66,67}
 // Decode Base64 to string with charset
 #include <iostream>
 #include <string>
-#include "Base64.h"
+#include "Base64.hpp"
 
 int main() {
   // Init

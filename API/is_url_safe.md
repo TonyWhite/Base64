@@ -32,7 +32,7 @@ Returns `false` in all other cases.
 // Check if encoded data is URL safe encoding
 #include <iostream>
 #include <string>
-#include "Base64.h"
+#include "Base64.hpp"
 
 int main() {
   // Init

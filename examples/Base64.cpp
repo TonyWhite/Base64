@@ -81,23 +81,23 @@ void Base64::encode(const char *src, const unsigned long src_len, std::string *e
   for (unsigned long i=0; i<src_len; i++) {
     if (++block == 3) {
       block = 0;
-      enc->push_back((*charset)[ (src[i-2] >> 2) & 0b111111 ]);
-      enc->push_back((*charset)[ ((src[i-2] << 4) | (src[i-1] >> 4)) & 0b111111 ]);
-      enc->push_back((*charset)[ ((src[i-1] << 2) | (src[i] >> 6)) & 0b111111 ]);
-      enc->push_back((*charset)[ src[i] & 0b111111 ]);
+      enc->push_back((*charset)[ ((src[i-2] & 0b11111111) >> 2) & 0b00111111 ]);
+      enc->push_back((*charset)[ (((src[i-2] & 0b11111111) << 4) | ((src[i-1] & 0b11111111) >> 4)) & 0b00111111 ]);
+      enc->push_back((*charset)[ (((src[i-1] & 0b11111111) << 2) | ((src[i] & 0b11111111) >> 6)) & 0b00111111 ]);
+      enc->push_back((*charset)[ src[i] & 0b00111111 ]);
     }
   }
 
   // Encode last incomplete block
   if (block > 0) { // Some bytes left
-    enc->push_back((*charset)[ (src[src_len-block] >> 2) & 0b111111 ]);
+    enc->push_back((*charset)[ (src[src_len-block] >> 2) & 0b00111111 ]);
     if (block == 1) { // 2 bytes left
-      enc->push_back((*charset)[ (src[src_len-block] << 4) & 0b111111 ]);
+      enc->push_back((*charset)[ (src[src_len-block] << 4) & 0b00111111 ]);
       if (padding) enc->push_back('=');
     }
     else { // 1 byte left
-      enc->push_back((*charset)[ ((src[src_len-block] << 4) | (src[src_len-1] >> 4)) & 0b111111 ]);
-      enc->push_back((*charset)[ (src[src_len-1] << 2) & 0b111111 ]);
+      enc->push_back((*charset)[ ((src[src_len-block] << 4) | (src[src_len-1] >> 4)) & 0b00111111 ]);
+      enc->push_back((*charset)[ (src[src_len-1] << 2) & 0b00111111 ]);
     }
     if (padding) enc->push_back('=');
   }

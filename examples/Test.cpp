@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Base64.hpp"
+#include "base64.hpp"
 
 // Dump buffer to standard out
 void dump_buffer(std::string description, std::vector<char> *buffer) {

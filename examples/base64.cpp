@@ -1,4 +1,4 @@
-#include "Base64.hpp"
+#include "base64.hpp"
 
 ////////////
 // PUBLIC //
@@ -55,6 +55,7 @@ bool Base64::decode(const char *enc, const unsigned long enc_len, char *dec, con
   for (unsigned long i=0; i<enc_len; i++) {
     if (! Base64::is_valid_char(enc[i], charset)) return false;
     buffer[block++] = charset->find(enc[i]);
+    
     switch (block) {
       case 2:
         dec[dec_len++] = ((buffer[0] & 0b00111111) << 2) | ((buffer[1] & 0b00110000) >> 4);
@@ -95,8 +96,8 @@ void Base64::encode(const char *src, const unsigned long src_len, std::string *e
       enc->push_back((*charset)[ (src[src_len-block] << 4) & 0b00111111 ]);
       if (padding) enc->push_back('=');
     }
-    else { // 1 byte left
-      enc->push_back((*charset)[ ((src[src_len-block] << 4) | (src[src_len-1] >> 4)) & 0b00111111 ]);
+    else { // 1 byte left: block=2
+      enc->push_back((*charset)[ (((src[src_len-block] & 0b11111111) << 4) | ((src[src_len-1] & 0b11111111) >> 4)) & 0b00111111 ]);
       enc->push_back((*charset)[ (src[src_len-1] << 2) & 0b00111111 ]);
     }
     if (padding) enc->push_back('=');
